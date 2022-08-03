@@ -263,7 +263,6 @@ def display_plotly(
                 legend_orientation="h",
                 margin_l=0,
                 margin_r=0,
-                legend_orientation="h",
                 legend_yanchor="top",
             )
             if len(frames) > 1:
