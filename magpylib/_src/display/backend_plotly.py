@@ -10,6 +10,7 @@ except ImportError as missing_module:  # pragma: no cover
         see https://github.com/plotly/plotly.py"""
     ) from missing_module
 
+import os
 from magpylib._src.defaults.defaults_classes import default_settings as Config
 from magpylib._src.display.traces_generic import get_frames
 from magpylib._src.defaults.defaults_utility import linearize_dict
@@ -257,6 +258,8 @@ def display_plotly(
         if update_layout:
             apply_fig_ranges(fig, ranges)
             fig.update_layout(legend_itemsizing="constant")
+        if os.environ.get("READTHEDOCS"):
+            fig.update_layout(legend_orientation="h")
         fig.update_layout(layout)
 
     if return_fig and not show_fig:
