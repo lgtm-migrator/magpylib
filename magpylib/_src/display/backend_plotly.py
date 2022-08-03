@@ -73,9 +73,9 @@ def animate_path(
                 "visible": True,
                 "xanchor": "right",
             },
-            "pad": {"b": 10, "t": 10},
+            "pad": {"b": 10, "t": 8, "l": 80},
             "len": 0.9,
-            "x": 0.1,
+            "x": 0,
             "y": 0,
             "steps": [],
         }
@@ -91,12 +91,12 @@ def animate_path(
                         "fromcurrent": True,
                     },
                 ],
-                "label": "Play",
+                "label": "▶",
                 "method": "animate",
             },
             {
                 "args": [[None], {"frame": {"duration": 0}, "mode": "immediate"}],
-                "label": "Pause",
+                "label": "◼",
                 "method": "animate",
             },
         ],
@@ -104,8 +104,8 @@ def animate_path(
         "pad": {"r": 10, "t": 20},
         "showactive": False,
         "type": "buttons",
-        "x": 0.1,
-        "xanchor": "right",
+        "x": 0,
+        "xanchor": "left",
         "y": 0,
         "yanchor": "top",
     }
@@ -259,7 +259,15 @@ def display_plotly(
             apply_fig_ranges(fig, ranges)
             fig.update_layout(legend_itemsizing="constant")
         if os.environ.get("READTHEDOCS"):
-            fig.update_layout(legend_orientation="h")
+            fig.update_layout(
+                legend_orientation="h",
+                margin_l=0,
+                margin_r=0,
+                legend_orientation="h",
+                legend_yanchor="top",
+            )
+            if len(frames) > 1:
+                fig.update_layout(legend_y=-0.5)
         fig.update_layout(layout)
 
     if return_fig and not show_fig:
