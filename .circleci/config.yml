@@ -29,7 +29,7 @@ jobs:
       - run:
           name: Install local magpylib
           command: |
-            pip install numpy
+            pip install numpy vtk
             pip install .[dev]
       - run:
           name: Set up testing tools and environment
