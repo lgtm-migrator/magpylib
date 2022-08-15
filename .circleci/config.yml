@@ -26,6 +26,8 @@ jobs:
           command: |
             apt update
             apt-get install -y libgl1-mesa-dev xvfb
+            Xvfb :1 -screen 0 1280x1024x24 -auth localhost
+            $ export DISPLAY=:1
       - run:
           name: Install local magpylib
           command: pip install .[dev]
