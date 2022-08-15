@@ -28,7 +28,9 @@ jobs:
             apt-get install -y libgl1-mesa-dev xvfb
       - run:
           name: Install local magpylib
-          command: pip install .[dev]
+          command: |
+            pip install numpy
+            pip install .[dev]
       - run:
           name: Set up testing tools and environment
           command: mkdir test-results && pip install tox && pip install pylint
