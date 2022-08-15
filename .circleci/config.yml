@@ -26,11 +26,10 @@ jobs:
           command: |
             apt update
             apt-get install -y libgl1-mesa-dev xvfb
+            apt-get install -y --no-install-recommends qt5-default
       - run:
           name: Install local magpylib
-          command: |
-            pip install numpy vtk
-            pip install .[dev]
+          command: pip install .[dev]
       - run:
           name: Set up testing tools and environment
           command: mkdir test-results && pip install tox && pip install pylint
