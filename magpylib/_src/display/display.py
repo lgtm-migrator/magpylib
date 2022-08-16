@@ -1,6 +1,4 @@
 """ Display function codes"""
-from importlib import import_module
-
 from magpylib._src.display.traces_generic import MagpyMarkers
 from magpylib._src.input_checks import check_dimensions
 from magpylib._src.input_checks import check_excitations
