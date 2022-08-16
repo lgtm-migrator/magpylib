@@ -26,6 +26,14 @@ jobs:
           command: |
             apt update
             apt-get install -y libgl1-mesa-dev xvfb
+            apt-get install qt5-default
+            apt-get install libxkbcommon-x11-0
+            apt-get install libxcb-icccm4
+            apt-get install libxcb-image0
+            apt-get install libxcb-keysyms1
+            apt-get install libxcb-randr0
+            apt-get install libxcb-render-util0
+            apt-get install libxcb-xinerama0
       - run:
           name: Install local magpylib
           command: pip install .[dev]
