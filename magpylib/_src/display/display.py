@@ -130,9 +130,18 @@ def show(
     )
 
     # pylint: disable=import-outside-toplevel
-    display_func = getattr(
-        import_module(f"magpylib._src.display.backend_{backend}"), f"display_{backend}"
-    )
+    if backend == "matplotlib":
+        from magpylib._src.display.backend_matplotlib import (
+            display_matplotlib as display_func,
+        )
+    elif backend == "plotly":
+        from magpylib._src.display.backend_plotly import display_plotly as display_func
+    elif backend == "pyvista":
+        from magpylib._src.display.backend_pyvista import (
+            display_pyvista as display_func,
+        )
+    elif backend == "mayavi":
+        from magpylib._src.display.backend_mayavi import display_mayavi as display_func
 
     if markers is not None and markers:
         obj_list_semi_flat = list(obj_list_semi_flat) + [MagpyMarkers(*markers)]
