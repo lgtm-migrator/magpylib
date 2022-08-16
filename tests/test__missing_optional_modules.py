@@ -2,6 +2,7 @@ import sys
 from unittest import mock
 
 import pytest
+from mayavi import mlab
 
 import magpylib as magpy
 
@@ -17,6 +18,7 @@ def test_show_with_missing_pyvista():
 def test_show_with_missing_mayavi():
     """Should raise if mayavi is not installed"""
     src = magpy.magnet.Cuboid((0, 0, 1000), (1, 1, 1))
+    mlab.options.offscreen = True
     with mock.patch.dict(sys.modules, {"mayavi": None}):
         # with pytest.raises(ModuleNotFoundError):
         src.show(return_fig=True, backend="mayavi")
