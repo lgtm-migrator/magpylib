@@ -1,10 +1,10 @@
-import mayavi
+"""import mayavi
 from mayavi import mlab
 
 import magpylib as magpy
 
 
-"""def test_Cuboid_display():
+def test_Cuboid_display():
     "test simple display with path"
     src = magpy.magnet.Cuboid((0, 0, 1000), (1, 1, 1))
     src.move([[i, 0, 0] for i in range(2)], start=0)
