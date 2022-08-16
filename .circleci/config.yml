@@ -26,14 +26,15 @@ jobs:
           command: |
             apt update
             apt-get install -y libgl1-mesa-dev xvfb
-            apt-get install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
-            apt-get install libxkbcommon-x11-0
-            apt-get install libxcb-icccm4
-            apt-get install libxcb-image0
-            apt-get install libxcb-keysyms1
-            apt-get install libxcb-randr0
-            apt-get install libxcb-render-util0
-            apt-get install libxcb-xinerama0
+            apt-get install -y --no-install-recommends xvfb libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0
+            apt-get clean -y
+            apt-get install -y --no-install-recommends qt5-default
+            apt-get clean -y
+            python3 -m pip install vtk
+            apt-get update && apt-get install -y python3-opencv && apt-get clean -y
+            pip3 install opencv-python
+            pip3 install PyVirtualDisplay
+            pip3 install mayavi PyQt5
       - run:
           name: Install local magpylib
           command: pip install .[dev]
